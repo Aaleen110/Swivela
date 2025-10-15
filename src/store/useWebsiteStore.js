@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
 // CA Section Templates
 export const sectionTemplates = {
@@ -201,10 +200,107 @@ export const defaultCAServices = [
   'Startup Registration & Compliance'
 ];
 
-export const useWebsiteStore = create(
-  persist(
-    (set, get) => ({
-      // Website Configuration
+export const useWebsiteStore = create((set, get) => ({
+  // Website Configuration
+  websiteConfig: {
+    title: 'Your CA Firm',
+    description: 'Professional Chartered Accountant Services',
+    logo: null,
+    colors: {
+      primary: '#2563eb',
+      secondary: '#64748b',
+      accent: '#d946ef'
+    }
+  },
+
+  // Selected Sections
+  selectedSections: {
+    header: 'header-1',
+    hero: 'hero-1',
+    about: 'about-1',
+    services: 'services-1',
+    testimonials: 'testimonials-1',
+    contact: 'contact-1',
+    footer: 'footer-1'
+  },
+
+  // Content Data
+  content: {
+    firmName: 'Your CA Firm',
+    tagline: 'Professional Chartered Accountant Services',
+    aboutText: 'We provide comprehensive financial and business advisory services to help your business grow.',
+    services: defaultCAServices,
+    team: [],
+    testimonials: [],
+    contactInfo: {
+      email: '',
+      phone: '',
+      address: '',
+      city: '',
+      state: '',
+      pincode: ''
+    }
+  },
+
+  // Uploaded Files
+  uploadedFiles: {
+    logo: null,
+    csvData: null
+  },
+
+  // Current Step in Builder
+  currentStep: 0,
+
+  // Actions
+  updateWebsiteConfig: (config) =>
+    set((state) => ({
+      websiteConfig: { ...state.websiteConfig, ...config }
+    })),
+
+  updateColors: (colors) =>
+    set((state) => ({
+      websiteConfig: {
+        ...state.websiteConfig,
+        colors: { ...state.websiteConfig.colors, ...colors }
+      }
+    })),
+
+  selectSection: (sectionType, templateId) =>
+    set((state) => ({
+      selectedSections: {
+        ...state.selectedSections,
+        [sectionType]: templateId
+      }
+    })),
+
+  updateContent: (content) =>
+    set((state) => ({
+      content: { ...state.content, ...content }
+    })),
+
+  uploadFile: (fileType, file) =>
+    set((state) => ({
+      uploadedFiles: {
+        ...state.uploadedFiles,
+        [fileType]: file
+      }
+    })),
+
+  setCurrentStep: (step) =>
+    set({ currentStep: step }),
+
+  nextStep: () =>
+    set((state) => ({
+      currentStep: Math.min(state.currentStep + 1, 5)
+    })),
+
+  prevStep: () =>
+    set((state) => ({
+      currentStep: Math.max(state.currentStep - 1, 0)
+    })),
+
+  resetWebsite: () =>
+    set({
       websiteConfig: {
         title: 'Your CA Firm',
         description: 'Professional Chartered Accountant Services',
@@ -215,8 +311,6 @@ export const useWebsiteStore = create(
           accent: '#d946ef'
         }
       },
-
-      // Selected Sections
       selectedSections: {
         header: 'header-1',
         hero: 'hero-1',
@@ -226,8 +320,6 @@ export const useWebsiteStore = create(
         contact: 'contact-1',
         footer: 'footer-1'
       },
-
-      // Content Data
       content: {
         firmName: 'Your CA Firm',
         tagline: 'Professional Chartered Accountant Services',
@@ -244,116 +336,10 @@ export const useWebsiteStore = create(
           pincode: ''
         }
       },
-
-      // Uploaded Files
       uploadedFiles: {
         logo: null,
         csvData: null
       },
-
-      // Current Step in Builder
-      currentStep: 0,
-
-      // Actions
-      updateWebsiteConfig: (config) =>
-        set((state) => ({
-          websiteConfig: { ...state.websiteConfig, ...config }
-        })),
-
-      updateColors: (colors) =>
-        set((state) => ({
-          websiteConfig: {
-            ...state.websiteConfig,
-            colors: { ...state.websiteConfig.colors, ...colors }
-          }
-        })),
-
-      selectSection: (sectionType, templateId) =>
-        set((state) => ({
-          selectedSections: {
-            ...state.selectedSections,
-            [sectionType]: templateId
-          }
-        })),
-
-      updateContent: (content) =>
-        set((state) => ({
-          content: { ...state.content, ...content }
-        })),
-
-      uploadFile: (fileType, file) =>
-        set((state) => ({
-          uploadedFiles: {
-            ...state.uploadedFiles,
-            [fileType]: file
-          }
-        })),
-
-      setCurrentStep: (step) =>
-        set({ currentStep: step }),
-
-      nextStep: () =>
-        set((state) => ({
-          currentStep: Math.min(state.currentStep + 1, 5)
-        })),
-
-      prevStep: () =>
-        set((state) => ({
-          currentStep: Math.max(state.currentStep - 1, 0)
-        })),
-
-      resetWebsite: () =>
-        set({
-          websiteConfig: {
-            title: 'Your CA Firm',
-            description: 'Professional Chartered Accountant Services',
-            logo: null,
-            colors: {
-              primary: '#2563eb',
-              secondary: '#64748b',
-              accent: '#d946ef'
-            }
-          },
-          selectedSections: {
-            header: 'header-1',
-            hero: 'hero-1',
-            about: 'about-1',
-            services: 'services-1',
-            testimonials: 'testimonials-1',
-            contact: 'contact-1',
-            footer: 'footer-1'
-          },
-          content: {
-            firmName: 'Your CA Firm',
-            tagline: 'Professional Chartered Accountant Services',
-            aboutText: 'We provide comprehensive financial and business advisory services to help your business grow.',
-            services: defaultCAServices,
-            team: [],
-            testimonials: [],
-            contactInfo: {
-              email: '',
-              phone: '',
-              address: '',
-              city: '',
-              state: '',
-              pincode: ''
-            }
-          },
-          uploadedFiles: {
-            logo: null,
-            csvData: null
-          },
-          currentStep: 0
-        })
-    }),
-    {
-      name: 'swivela-website-builder',
-      partialize: (state) => ({
-        websiteConfig: state.websiteConfig,
-        selectedSections: state.selectedSections,
-        content: state.content,
-        uploadedFiles: state.uploadedFiles
-      })
-    }
-  )
-);
+      currentStep: 0
+    })
+}));
