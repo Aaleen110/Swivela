@@ -129,7 +129,7 @@ const SectionWithNavigation = ({ sectionType, isActive = false }) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Fixed Position */}
       <AnimatePresence>
         {isHovered && (
           <>
@@ -138,7 +138,8 @@ const SectionWithNavigation = ({ sectionType, isActive = false }) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               onClick={prevTemplate}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+              className="fixed left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+              style={{ position: 'fixed' }}
             >
               <ChevronLeft className="w-6 h-6 text-gray-600" />
             </motion.button>
@@ -148,7 +149,8 @@ const SectionWithNavigation = ({ sectionType, isActive = false }) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               onClick={nextTemplate}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+              className="fixed right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+              style={{ position: 'fixed' }}
             >
               <ChevronRight className="w-6 h-6 text-gray-600" />
             </motion.button>
@@ -169,14 +171,15 @@ const SectionWithNavigation = ({ sectionType, isActive = false }) => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Template Indicators */}
+      {/* Template Indicators - Fixed Position */}
       <AnimatePresence>
         {isHovered && templates.length > 1 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 bg-white bg-opacity-90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg"
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-2 bg-white bg-opacity-90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg"
+            style={{ position: 'fixed' }}
           >
             {templates.map((_, index) => (
               <button
