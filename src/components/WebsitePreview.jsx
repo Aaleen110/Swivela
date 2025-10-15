@@ -1,59 +1,14 @@
-import { useWebsiteStore, sectionTemplates } from '../store/useWebsiteStore';
-
-// Import all section components
-import Hero1 from './sections/Hero1';
-import Hero2 from './sections/Hero2';
-import Hero3 from './sections/Hero3';
-import About1 from './sections/About1';
-import Services1 from './sections/Services1';
-import Testimonials1 from './sections/Testimonials1';
-import Contact1 from './sections/Contact1';
-
-const sectionComponents = {
-  hero: {
-    'hero-1': Hero1,
-    'hero-2': Hero2,
-    'hero-3': Hero3,
-    'hero-4': Hero1,
-    'hero-5': Hero2,
-    'hero-6': Hero3
-  },
-  about: {
-    'about-1': About1,
-    'about-2': About1,
-    'about-3': About1
-  },
-  services: {
-    'services-1': Services1,
-    'services-2': Services1,
-    'services-3': Services1
-  },
-  testimonials: {
-    'testimonials-1': Testimonials1,
-    'testimonials-2': Testimonials1
-  },
-  contact: {
-    'contact-1': Contact1,
-    'contact-2': Contact1
-  }
-};
+import SectionWithNavigation from './SectionWithNavigation';
 
 const WebsitePreview = () => {
-  const { selectedSections } = useWebsiteStore();
-
   // Define the order of sections
   const sectionOrder = ['hero', 'about', 'services', 'testimonials', 'contact'];
 
   return (
     <div className="w-full">
-      {sectionOrder.map((sectionType) => {
-        const selectedTemplateId = selectedSections[sectionType];
-        const Component = sectionComponents[sectionType]?.[selectedTemplateId];
-        
-        if (!Component) return null;
-
-        return <Component key={sectionType} />;
-      })}
+      {sectionOrder.map((sectionType) => (
+        <SectionWithNavigation key={sectionType} sectionType={sectionType} />
+      ))}
       
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">

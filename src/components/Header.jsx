@@ -11,7 +11,7 @@ import {
 import { useWebsiteStore } from '../store/useWebsiteStore';
 import ColorPicker from './ColorPicker';
 
-const Header = ({ activeSectionType, setActiveSectionType }) => {
+const Header = () => {
   const { websiteConfig, updateColors } = useWebsiteStore();
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
