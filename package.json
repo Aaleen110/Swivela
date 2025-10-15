@@ -1,8 +1,9 @@
 {
   "name": "swivela",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "Swipe-to-Build Website Builder - A no-code SaaS platform for CAs and professionals",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,7 +12,14 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "framer-motion": "^10.16.5",
+    "lucide-react": "^0.294.0",
+    "react-color": "^2.19.3",
+    "react-dropzone": "^14.2.3",
+    "papaparse": "^5.4.1",
+    "react-hot-toast": "^2.4.1",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -21,6 +29,9 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6"
   }
 }
