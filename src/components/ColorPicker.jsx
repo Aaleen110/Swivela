@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Palette, Check } from 'lucide-react';
 import { useWebsiteStore } from '../store/useWebsiteStore';
 
-const ColorPicker = () => {
+const ColorPicker = ({ onColorChange, compact = false }) => {
   const { websiteConfig, updateColors } = useWebsiteStore();
   const [activeColorType, setActiveColorType] = useState('primary');
 
@@ -62,6 +62,9 @@ const ColorPicker = () => {
 
   const handleColorSelect = (color) => {
     updateColors({ [activeColorType]: color });
+    if (onColorChange) {
+      onColorChange({ [activeColorType]: color });
+    }
   };
 
   const activeColorTypeData = colorTypes.find(type => type.key === activeColorType);
