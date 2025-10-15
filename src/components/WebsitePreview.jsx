@@ -1,13 +1,23 @@
 import SectionWithNavigation from './SectionWithNavigation';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const WebsitePreview = () => {
   // Define the order of sections
   const sectionOrder = ['hero', 'about', 'services', 'testimonials', 'contact'];
+  const { activeSection, setRef } = useIntersectionObserver({
+    threshold: 0.6, // Section needs to be 60% visible to be considered active
+    rootMargin: '-10% 0px -10% 0px' // Add some margin to prevent flickering
+  });
 
   return (
     <div className="w-full">
       {sectionOrder.map((sectionType) => (
-        <SectionWithNavigation key={sectionType} sectionType={sectionType} />
+        <div key={sectionType} ref={setRef(sectionType)}>
+          <SectionWithNavigation 
+            sectionType={sectionType} 
+            isActive={activeSection === sectionType}
+          />
+        </div>
       ))}
       
       {/* Footer */}

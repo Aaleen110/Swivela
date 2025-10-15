@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useWebsiteStore, sectionTemplates } from '../store/useWebsiteStore';
@@ -41,7 +41,7 @@ const sectionComponents = {
   }
 };
 
-const SectionWithNavigation = ({ sectionType }) => {
+const SectionWithNavigation = ({ sectionType, isActive = false }) => {
   const { selectedSections, selectSection } = useWebsiteStore();
   const [isHovered, setIsHovered] = useState(false);
   const [touchStart, setTouchStart] = useState(null);
@@ -86,6 +86,33 @@ const SectionWithNavigation = ({ sectionType }) => {
       prevTemplate();
     }
   };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Only respond to keyboard events when this section is active (in viewport)
+      if (!isActive) return;
+      
+      // Prevent default behavior for arrow keys to avoid page scrolling
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+      }
+
+      if (e.key === 'ArrowRight') {
+        nextTemplate();
+      } else if (e.key === 'ArrowLeft') {
+        prevTemplate();
+      }
+    };
+
+    // Add event listener
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isActive, currentIndex, templates, sectionType, selectSection]);
 
   return (
     <div 

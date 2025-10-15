@@ -121,6 +121,19 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Keyboard Navigation Hint */}
+      <div className="bg-blue-50 border-b border-blue-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+          <div className="flex items-center justify-center space-x-4 text-sm text-blue-700">
+            <span>💡 <strong>Pro Tip:</strong> Use ← → arrow keys to switch templates</span>
+            <span>•</span>
+            <span>Hover over sections to see navigation controls</span>
+            <span>•</span>
+            <span>Swipe on mobile devices</span>
+          </div>
+        </div>
+      </div>
+
     </header>
   );
 };
