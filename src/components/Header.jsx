@@ -121,33 +121,6 @@ const Header = ({ activeSectionType, setActiveSectionType }) => {
         </div>
       </div>
 
-      {/* Section Tabs */}
-      <div className="border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex space-x-8">
-            {[
-              { id: 'hero', name: 'Hero Section', icon: '🏠' },
-              { id: 'about', name: 'About Section', icon: '👥' },
-              { id: 'services', name: 'Services', icon: '⚙️' },
-              { id: 'testimonials', name: 'Testimonials', icon: '💬' },
-              { id: 'contact', name: 'Contact', icon: '📞' }
-            ].map((section) => (
-              <button
-                key={section.id}
-                onClick={() => setActiveSectionType(section.id)}
-                className={`flex items-center space-x-2 px-4 py-3 text-sm font-medium transition-colors border-b-2 ${
-                  activeSectionType === section.id
-                    ? 'text-primary-600 border-primary-600'
-                    : 'text-gray-600 hover:text-gray-900 hover:border-primary-600 border-transparent'
-                }`}
-              >
-                <span>{section.icon}</span>
-                <span>{section.name}</span>
-              </button>
-            ))}
-          </nav>
-        </div>
-      </div>
     </header>
   );
 };

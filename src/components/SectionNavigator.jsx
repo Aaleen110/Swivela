@@ -3,10 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useWebsiteStore, sectionTemplates } from '../store/useWebsiteStore';
 
-// Import all hero components
+// Import all section components
 import Hero1 from './sections/Hero1';
 import Hero2 from './sections/Hero2';
 import Hero3 from './sections/Hero3';
+import About1 from './sections/About1';
+import Services1 from './sections/Services1';
+import Testimonials1 from './sections/Testimonials1';
+import Contact1 from './sections/Contact1';
 
 const sectionComponents = {
   hero: {
@@ -16,6 +20,24 @@ const sectionComponents = {
     'hero-4': Hero1, // Placeholder - will create more components
     'hero-5': Hero2, // Placeholder
     'hero-6': Hero3  // Placeholder
+  },
+  about: {
+    'about-1': About1,
+    'about-2': About1, // Placeholder
+    'about-3': About1  // Placeholder
+  },
+  services: {
+    'services-1': Services1,
+    'services-2': Services1, // Placeholder
+    'services-3': Services1  // Placeholder
+  },
+  testimonials: {
+    'testimonials-1': Testimonials1,
+    'testimonials-2': Testimonials1 // Placeholder
+  },
+  contact: {
+    'contact-1': Contact1,
+    'contact-2': Contact1 // Placeholder
   }
 };
 
