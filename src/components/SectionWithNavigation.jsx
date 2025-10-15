@@ -8,9 +8,15 @@ import Hero1 from './sections/Hero1';
 import Hero2 from './sections/Hero2';
 import Hero3 from './sections/Hero3';
 import About1 from './sections/About1';
+import About2 from './sections/About2';
+import About3 from './sections/About3';
 import Services1 from './sections/Services1';
+import Services2 from './sections/Services2';
+import Services3 from './sections/Services3';
 import Testimonials1 from './sections/Testimonials1';
+import Testimonials2 from './sections/Testimonials2';
 import Contact1 from './sections/Contact1';
+import Contact2 from './sections/Contact2';
 
 const sectionComponents = {
   hero: {
@@ -23,21 +29,21 @@ const sectionComponents = {
   },
   about: {
     'about-1': About1,
-    'about-2': About1,
-    'about-3': About1
+    'about-2': About2,
+    'about-3': About3
   },
   services: {
     'services-1': Services1,
-    'services-2': Services1,
-    'services-3': Services1
+    'services-2': Services2,
+    'services-3': Services3
   },
   testimonials: {
     'testimonials-1': Testimonials1,
-    'testimonials-2': Testimonials1
+    'testimonials-2': Testimonials2
   },
   contact: {
     'contact-1': Contact1,
-    'contact-2': Contact1
+    'contact-2': Contact2
   }
 };
 
