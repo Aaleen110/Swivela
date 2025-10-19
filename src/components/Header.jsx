@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Palette, 
-  Upload, 
-  Eye, 
+import {
+  Palette,
+  Upload,
+  Eye,
   Download,
   Settings,
-  ChevronDown
+  ChevronDown,
 } from 'lucide-react';
 import { useWebsiteStore } from '../store/useWebsiteStore';
 import ColorPicker from './ColorPicker';
@@ -32,8 +32,34 @@ const Header = () => {
 
           {/* Controls */}
           <div className="flex items-center space-x-4">
+
+            {/* Font Selection */}
+            <div className="relative">
+
+              <button
+                onClick={() => setShowColorPicker(!showColorPicker)}
+                className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                <Settings className="w-4 h-4" />
+                <span>Fonts</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
+
+              {showColorPicker && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute top-full right-0 mt-2 w-[800px] max-h-[80vh] bg-white rounded-xl shadow-xl border border-gray-200 p-4 z-50 overflow-y-auto"
+                >
+                  <ColorPicker onColorChange={handleColorChange} />
+                </motion.div>
+              )}
+            </div>
+
             {/* Color Picker */}
             <div className="relative">
+
               <button
                 onClick={() => setShowColorPicker(!showColorPicker)}
                 className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
@@ -48,7 +74,7 @@ const Header = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="absolute top-full right-0 mt-2 w-96 bg-white rounded-xl shadow-xl border border-gray-200 p-6 z-50"
+                  className="absolute top-full right-0 mt-2 w-[800px] max-h-[80vh] bg-white rounded-xl shadow-xl border border-gray-200 p-4 z-50 overflow-y-auto"
                 >
                   <ColorPicker onColorChange={handleColorChange} />
                 </motion.div>
