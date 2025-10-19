@@ -2,30 +2,28 @@ import { create } from 'zustand';
 
 // CA Section Templates
 export const sectionTemplates = {
-  header: [
+  navTopBar: [
     {
-      id: 'header-1',
+      id: 'navTopBar-1',
+      name: 'Clean Navigation',
+      description: 'Simple header with logo, navigation and CTA button'
+    },
+    {
+      id: 'navTopBar-2',
       name: 'Professional Header',
-      type: 'header',
-      preview: '/templates/header-1.png',
-      component: 'Header1',
-      description: 'Clean, professional header with logo and navigation'
+      description: 'Header with contact info and branded design'
+    }
+  ],
+  contactShortcut: [
+    {
+      id: 'contactShortcut-1',
+      name: 'Simple CTA',
+      description: 'Clean call-to-action with consultation buttons'
     },
     {
-      id: 'header-2',
-      name: 'Modern Header',
-      type: 'header',
-      preview: '/templates/header-2.png',
-      component: 'Header2',
-      description: 'Modern design with contact information'
-    },
-    {
-      id: 'header-3',
-      name: 'Minimal Header',
-      type: 'header',
-      preview: '/templates/header-3.png',
-      component: 'Header3',
-      description: 'Minimalist design for focused approach'
+      id: 'contactShortcut-2',
+      name: 'Quick Contact',
+      description: 'Multiple contact options with action buttons'
     }
   ],
   hero: [
@@ -130,6 +128,18 @@ export const sectionTemplates = {
       description: 'Card-based layout with icons'
     }
   ],
+  certifications: [
+    {
+      id: 'certifications-1',
+      name: 'Certification Grid',
+      description: 'Grid layout showcasing professional certifications'
+    },
+    {
+      id: 'certifications-2',
+      name: 'Credential List',
+      description: 'Detailed list of certifications with verification badges'
+    }
+  ],
   testimonials: [
     {
       id: 'testimonials-1',
@@ -148,7 +158,7 @@ export const sectionTemplates = {
       description: 'Success stories and case studies'
     }
   ],
-  contact: [
+  contactUs: [
     {
       id: 'contact-1',
       name: 'Contact Form',
@@ -215,12 +225,14 @@ export const useWebsiteStore = create((set, get) => ({
 
   // Selected Sections
   selectedSections: {
-    header: 'header-1',
+    navTopBar: 'navTopBar-1',
     hero: 'hero-1',
     about: 'about-1',
+    contactShortcut: 'contactShortcut-1',
     services: 'services-1',
+    certifications: 'certifications-1',
     testimonials: 'testimonials-1',
-    contact: 'contact-1',
+    contactUs: 'contactUs-1',
     footer: 'footer-1'
   },
 
@@ -311,15 +323,17 @@ export const useWebsiteStore = create((set, get) => ({
           accent: '#d946ef'
         }
       },
-      selectedSections: {
-        header: 'header-1',
-        hero: 'hero-1',
-        about: 'about-1',
-        services: 'services-1',
-        testimonials: 'testimonials-1',
-        contact: 'contact-1',
-        footer: 'footer-1'
-      },
+              selectedSections: {
+                navTopBar: 'navTopBar-1',
+                hero: 'hero-1',
+                about: 'about-1',
+                contactShortcut: 'contactShortcut-1',
+                services: 'services-1',
+                certifications: 'certifications-1',
+                testimonials: 'testimonials-1',
+                contactUs: 'contactUs-1',
+                footer: 'footer-1'
+              },
       content: {
         firmName: 'Your CA Firm',
         tagline: 'Professional Chartered Accountant Services',

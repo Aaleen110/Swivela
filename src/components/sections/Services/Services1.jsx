@@ -1,4 +1,4 @@
-import { useWebsiteStore } from '../../store/useWebsiteStore';
+import { useWebsiteStore } from '../../../store/useWebsiteStore';
 
 const Services1 = () => {
   const { websiteConfig, content } = useWebsiteStore();
