@@ -3,8 +3,8 @@ import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const WebsitePreview = () => {
   // Define the order of sections according to the new structure
+  // Note: navTopBar is excluded here as it will be rendered separately below the Header
   const sectionOrder = [
-    'navTopBar', 
     'hero', 
     'about', 
     'contactShortcut', 

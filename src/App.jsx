@@ -1,6 +1,7 @@
 import { Toaster } from 'react-hot-toast';
 import Header from './components/Header';
 import WebsitePreview from './components/WebsitePreview';
+import SectionWithNavigation from './components/SectionWithNavigation';
 import './App.css';
 
 function App() {
@@ -8,8 +9,14 @@ function App() {
     <div className="min-h-screen bg-gray-50">
       <Toaster position="top-right" />
       
-      {/* Header with Controls */}
+      {/* Header with Controls - Swivela Customization Bar */}
       <Header />
+
+      {/* NavTopBar - Website Theme Navigation */}
+      <SectionWithNavigation 
+        sectionType="navTopBar" 
+        isActive={true}
+      />
 
       {/* Main Content - Full Website Preview */}
       <main>

@@ -15,7 +15,7 @@ const NavTopBar2 = () => {
 
   return (
     <nav 
-      className="fixed top-0 left-0 right-0 z-50"
+      className="sticky top-0 z-40"
       style={{ backgroundColor: colors.primary }}
     >
       <div className="max-w-6xl mx-auto px-6">
