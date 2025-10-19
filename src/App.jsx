@@ -1,6 +1,6 @@
 import { Toaster } from 'react-hot-toast';
 import Header from './components/Header';
-import WebsitePreview from './components/WebsitePreview';
+import WebsiteBuilder from './components/WebsiteBuilder';
 import SectionWithNavigation from './components/SectionWithNavigation';
 import './App.css';
 
@@ -20,7 +20,7 @@ function App() {
 
       {/* Main Content - Full Website Preview */}
       <main>
-        <WebsitePreview />
+        <WebsiteBuilder />
       </main>
     </div>
   );
