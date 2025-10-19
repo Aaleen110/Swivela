@@ -1,32 +1,10 @@
+import { useState } from 'react';
 import SectionWithNavigation from './SectionWithNavigation';
-import useIntersectionObserver from '../hooks/useIntersectionObserver';
-
-const NavigationChips = () => {
-  return (
-    <div className="fixed top-60 -left-6 flex flex-wrap flex-col gap-20 z-50">
-      <div className="bg-primary-600 text-white py-2 -rotate-90 w-25 text-center">
-        <span className="text-sm">Hero</span>
-      </div>
-
-        <div className="bg-primary-600 text-white py-2 -rotate-90 w-25 text-center">
-          <span className="text-sm">About</span>
-        </div>
-
-        <div className="bg-primary-600 text-white py-2 px-2 -rotate-90 w-25 text-center">
-          <span className="text-sm">Contact</span>
-        </div>
-
-        <div className="bg-primary-600 text-white py-2 px-2 -rotate-90 w-25 text-center">
-          <span className="text-sm">Services</span>
-        </div>
-    </div>
-  )
-}
+import SectionTabs from './SectionTabs';
 
 const WebsiteBuilder = () => {
-  // Define the order of sections according to the new structure
-  // Note: navTopBar is excluded here as it will be rendered separately below the Header
-  const sectionOrder = [
+  // Define the order of sections - now manageable via tabs
+  const [sectionOrder, setSectionOrder] = useState([
     'hero', 
     'about', 
     'contactShortcut', 
@@ -35,25 +13,29 @@ const WebsiteBuilder = () => {
     'testimonials', 
     'contactUs', 
     'footer'
-  ];
-  const { activeSection, setRef } = useIntersectionObserver({
-    threshold: 0.6, // Section needs to be 60% visible to be considered active
-    rootMargin: '-10% 0px -10% 0px' // Add some margin to prevent flickering
-  });
+  ]);
+  
+  const [activeSection, setActiveSection] = useState('hero');
+
+  const handleReorder = (newOrder) => {
+    setSectionOrder(newOrder);
+  };
 
   return (
-    <div className="w-full">
-      
-      {sectionOrder.map((sectionType) => (
-        <div key={sectionType} ref={setRef(sectionType)}>
-          <SectionWithNavigation 
-            sectionType={sectionType} 
-            isActive={activeSection === sectionType}
-          />
-        </div>
-      ))}
+    <div className="w-full pb-20">
+      {/* Render only the active section */}
+      <SectionWithNavigation 
+        sectionType={activeSection} 
+        isActive={true}
+      />
 
-      {/* <NavigationChips /> */}
+      {/* Excel-style section tabs at bottom */}
+      <SectionTabs 
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+        sectionOrder={sectionOrder}
+        onReorder={handleReorder}
+      />
     </div>
   );
 };

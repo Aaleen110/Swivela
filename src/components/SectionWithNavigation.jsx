@@ -112,12 +112,9 @@ const SectionWithNavigation = ({ sectionType, isActive = false }) => {
     }
   };
 
-  // Keyboard navigation
+  // Keyboard navigation - always active when this component is rendered
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Only respond to keyboard events when this section is active (in viewport)
-      if (!isActive) return;
-      
       // Prevent default behavior for arrow keys to avoid page scrolling
       if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         e.preventDefault();
@@ -137,7 +134,7 @@ const SectionWithNavigation = ({ sectionType, isActive = false }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isActive, currentIndex, templates, sectionType, selectSection]);
+  }, [currentIndex, templates, sectionType, selectSection]);
 
   return (
     <div 

@@ -67,55 +67,10 @@ const Header = () => {
               <span>Preview</span>
             </button>
 
-            {/* Settings */}
-            <div className="relative">
-              <button
-                onClick={() => setShowSettings(!showSettings)}
-                className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-              >
-                <Settings className="w-4 h-4" />
-                <span>Settings</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
-
-              {showSettings && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute top-full right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-200 p-4 z-50"
-                >
-                  <div className="space-y-3">
-                    <h3 className="font-semibold text-gray-900">Website Settings</h3>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Firm Name
-                      </label>
-                      <input
-                        type="text"
-                        className="input w-full"
-                        defaultValue={websiteConfig.title}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Tagline
-                      </label>
-                      <input
-                        type="text"
-                        className="input w-full"
-                        defaultValue={websiteConfig.description}
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </div>
-
             {/* Generate Button */}
             <button className="flex items-center space-x-2 px-6 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors">
-              <Download className="w-4 h-4" />
-              <span>Generate</span>
+              {/* <Download className="w-4 h-4" /> */}
+              <span>Go Live!</span>
             </button>
           </div>
         </div>
