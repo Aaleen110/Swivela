@@ -7,17 +7,24 @@ import {
   Download,
   Settings,
   ChevronDown,
+  Type,
 } from 'lucide-react';
 import { useWebsiteStore } from '../store/useWebsiteStore';
 import ColorPicker from './ColorPicker';
+import FontPicker from './FontPicker';
 
 const Header = () => {
-  const { websiteConfig, updateColors } = useWebsiteStore();
+  const { websiteConfig, updateColors, updateFonts } = useWebsiteStore();
   const [showColorPicker, setShowColorPicker] = useState(false);
+  const [showFontPicker, setShowFontPicker] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
   const handleColorChange = (colors) => {
     updateColors(colors);
+  };
+
+  const handleFontChange = (fonts) => {
+    updateFonts(fonts);
   };
 
   return (
@@ -37,22 +44,22 @@ const Header = () => {
             <div className="relative">
 
               <button
-                onClick={() => setShowColorPicker(!showColorPicker)}
+                onClick={() => setShowFontPicker(!showFontPicker)}
                 className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
               >
-                <Settings className="w-4 h-4" />
+                <Type className="w-4 h-4" />
                 <span>Fonts</span>
                 <ChevronDown className="w-4 h-4" />
               </button>
 
-              {showColorPicker && (
+              {showFontPicker && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   className="absolute top-full right-0 mt-2 w-[800px] max-h-[80vh] bg-white rounded-xl shadow-xl border border-gray-200 p-4 z-50 overflow-y-auto"
                 >
-                  <ColorPicker onColorChange={handleColorChange} />
+                  <FontPicker onFontChange={handleFontChange} />
                 </motion.div>
               )}
             </div>

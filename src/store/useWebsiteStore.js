@@ -220,6 +220,9 @@ export const useWebsiteStore = create((set, get) => ({
       primary: '#2563eb',
       secondary: '#64748b',
       accent: '#d946ef'
+    },
+    fonts: {
+      primary: 'Inter'
     }
   },
 
@@ -277,6 +280,14 @@ export const useWebsiteStore = create((set, get) => ({
       }
     })),
 
+  updateFonts: (fonts) =>
+    set((state) => ({
+      websiteConfig: {
+        ...state.websiteConfig,
+        fonts: { ...state.websiteConfig.fonts, ...fonts }
+      }
+    })),
+
   selectSection: (sectionType, templateId) =>
     set((state) => ({
       selectedSections: {
@@ -321,6 +332,9 @@ export const useWebsiteStore = create((set, get) => ({
           primary: '#2563eb',
           secondary: '#64748b',
           accent: '#d946ef'
+        },
+        fonts: {
+          primary: 'Inter'
         }
       },
               selectedSections: {
