@@ -11,15 +11,11 @@ const FontPicker = ({ onFontChange, compact = false }) => {
 
   const fontCategories = [
     {
-      name: 'Modern Sans',
+      name: 'Clean & Modern',
       fonts: [
         { name: 'Inter', weights: [300, 400, 500, 600, 700], description: 'Clean and versatile' },
-        { name: 'Poppins', weights: [300, 400, 500, 600, 700], description: 'Friendly and approachable' },
-        { name: 'Roboto', weights: [300, 400, 500, 700], description: 'Google\'s signature font' },
-        { name: 'Open Sans', weights: [300, 400, 600, 700], description: 'Highly readable' },
-        { name: 'Lato', weights: [300, 400, 700], description: 'Humanist sans-serif' },
+        { name: 'Poppins', weights: [300, 400, 500, 600, 700], description: 'Friendly and rounded' },
         { name: 'Montserrat', weights: [300, 400, 500, 600, 700], description: 'Geometric and modern' },
-        { name: 'Source Sans Pro', weights: [300, 400, 600, 700], description: 'Adobe\'s clean font' },
         { name: 'Nunito', weights: [300, 400, 600, 700], description: 'Rounded and friendly' }
       ]
     },
@@ -28,20 +24,15 @@ const FontPicker = ({ onFontChange, compact = false }) => {
       fonts: [
         { name: 'Playfair Display', weights: [400, 500, 600, 700], description: 'Elegant and sophisticated' },
         { name: 'Merriweather', weights: [300, 400, 700], description: 'Designed for reading' },
-        { name: 'Lora', weights: [400, 500, 600, 700], description: 'Contemporary serif' },
-        { name: 'Crimson Text', weights: [400, 600, 700], description: 'Classic book typography' },
-        { name: 'Libre Baskerville', weights: [400, 700], description: 'Traditional serif' },
-        { name: 'PT Serif', weights: [400, 700], description: 'Russian-inspired serif' }
+        { name: 'Lora', weights: [400, 500, 600, 700], description: 'Contemporary serif' }
       ]
     },
     {
-      name: 'Display & Creative',
+      name: 'Distinctive Styles',
       fonts: [
         { name: 'Oswald', weights: [300, 400, 500, 600, 700], description: 'Condensed and bold' },
         { name: 'Raleway', weights: [300, 400, 500, 600, 700], description: 'Elegant and thin' },
         { name: 'Ubuntu', weights: [300, 400, 500, 700], description: 'Humanist and friendly' },
-        { name: 'Fira Sans', weights: [300, 400, 500, 600, 700], description: 'Mozilla\'s font' },
-        { name: 'Work Sans', weights: [300, 400, 500, 600, 700], description: 'Optimized for UI' },
         { name: 'DM Sans', weights: [400, 500, 700], description: 'Low-contrast sans-serif' }
       ]
     },
@@ -49,9 +40,7 @@ const FontPicker = ({ onFontChange, compact = false }) => {
       name: 'Monospace',
       fonts: [
         { name: 'JetBrains Mono', weights: [400, 500, 700], description: 'Developer-friendly' },
-        { name: 'Fira Code', weights: [300, 400, 500, 600, 700], description: 'Programming font' },
-        { name: 'Source Code Pro', weights: [300, 400, 600, 700], description: 'Adobe\'s monospace' },
-        { name: 'Roboto Mono', weights: [300, 400, 500, 700], description: 'Google\'s monospace' }
+        { name: 'Fira Code', weights: [300, 400, 500, 600, 700], description: 'Programming font' }
       ]
     }
   ];
@@ -73,11 +62,11 @@ const FontPicker = ({ onFontChange, compact = false }) => {
   })).filter(category => category.fonts.length > 0);
 
   return (
-    <div className="w-full">
+    <div className="w-full" style={{ fontFamily: 'Poppins, sans-serif' }}>
       {/* Modern Header */}
       <div className="text-center mb-6 pb-4 border-b border-gray-100">
         <div className="flex items-center justify-center mb-3">
-          <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center mr-3">
+          <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
             <Type className="w-4 h-4 text-white" />
           </div>
           <h2 className="text-xl font-bold text-gray-900">Typography</h2>
@@ -181,11 +170,11 @@ const FontPicker = ({ onFontChange, compact = false }) => {
                     whileHover={{ scale: 1.02, y: -1 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => handleFontSelect(font.name)}
-                    className={`relative p-4 rounded-xl border-2 transition-all duration-200 text-left ${
-                      isSelected 
-                        ? 'border-primary-500 bg-gradient-to-r from-primary-50 to-primary-100 shadow-md' 
-                        : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
-                    }`}
+            className={`relative p-4 rounded-xl border-2 transition-all duration-200 text-left ${
+              isSelected 
+                ? 'border-indigo-500 bg-gradient-to-r from-indigo-50 to-indigo-100 shadow-md' 
+                : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
+            }`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
@@ -200,7 +189,7 @@ const FontPicker = ({ onFontChange, compact = false }) => {
                             <motion.div
                               initial={{ scale: 0, rotate: -180 }}
                               animate={{ scale: 1, rotate: 0 }}
-                              className="w-5 h-5 bg-primary-500 rounded-full flex items-center justify-center"
+                              className="w-5 h-5 bg-indigo-500 rounded-full flex items-center justify-center"
                             >
                               <Check className="w-3 h-3 text-white" />
                             </motion.div>

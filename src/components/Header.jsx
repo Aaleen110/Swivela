@@ -12,11 +12,13 @@ import {
 import { useWebsiteStore } from '../store/useWebsiteStore';
 import ColorPicker from './ColorPicker';
 import FontPicker from './FontPicker';
+import LogoPicker from './LogoPicker';
 
 const Header = () => {
   const { websiteConfig, updateColors, updateFonts } = useWebsiteStore();
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [showFontPicker, setShowFontPicker] = useState(false);
+  const [showLogoPicker, setShowLogoPicker] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
   const handleColorChange = (colors) => {
@@ -28,12 +30,12 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+    <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50" style={{ fontFamily: 'Poppins, sans-serif' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-primary-600">Swivela</h1>
+            <h1 className="text-2xl font-bold text-indigo-600">Swivela</h1>
             <span className="ml-2 text-sm text-gray-500">Website Builder</span>
           </div>
 
@@ -89,7 +91,10 @@ const Header = () => {
             </div>
 
             {/* Logo Upload */}
-            <button className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+            <button 
+              onClick={() => setShowLogoPicker(true)}
+              className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+            >
               <Upload className="w-4 h-4" />
               <span>Logo</span>
             </button>
@@ -101,7 +106,7 @@ const Header = () => {
             </button>
 
             {/* Generate Button */}
-            <button className="flex items-center space-x-2 px-6 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors">
+            <button className="flex items-center space-x-2 px-6 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors">
               {/* <Download className="w-4 h-4" /> */}
               <span>Go Live!</span>
             </button>
@@ -121,6 +126,12 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+      {/* Logo Picker Modal */}
+      <LogoPicker 
+        isOpen={showLogoPicker} 
+        onClose={() => setShowLogoPicker(false)} 
+      />
 
     </header>
   );

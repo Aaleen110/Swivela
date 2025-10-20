@@ -73,7 +73,7 @@ const SectionTabs = ({ activeSection, setActiveSection, sectionOrder, onReorder 
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-xl z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-xl z-50" style={{ fontFamily: 'Poppins, sans-serif' }}>
       {/* <div className="max-w-7xl mx-auto px-6 py-3"> */}
         <div className="flex items-center justify-between p-2">
           {/* <h3 className="text-sm font-semibold text-gray-800">Website Sections</h3> */}
@@ -91,11 +91,11 @@ const SectionTabs = ({ activeSection, setActiveSection, sectionOrder, onReorder 
                 flex items-center space-x-2 px-4 py-3 rounded-lg cursor-pointer transition-all duration-200
                 min-w-fit whitespace-nowrap select-none border
                 ${activeSection === sectionType
-                    ? 'bg-primary-600 text-white border-primary-600 shadow-md'
+                    ? 'bg-indigo-600 text-white border-indigo-600 shadow-md'
                     : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100 hover:border-gray-300'
                   }
-                ${draggedIndex === index ? 'opacity-50 scale-95' : ''}
-                ${sectionType === 'hero' || sectionType === 'footer' ? 'opacity-75' : ''}
+                ${draggedIndex === index ? '' : ''}
+                ${sectionType === 'hero' || sectionType === 'footer' ? '' : ''}
               `}
                 whileHover={{ scale: sectionType === 'hero' || sectionType === 'footer' ? 1 : 1.02 }}
                 whileTap={{ scale: sectionType === 'hero' || sectionType === 'footer' ? 1 : 0.98 }}

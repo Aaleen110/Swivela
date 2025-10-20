@@ -112,11 +112,11 @@ const ColorPicker = ({ onColorChange, compact = false }) => {
   const activeColorTypeData = colorTypes.find(type => type.key === activeColorType);
 
   return (
-    <div className="w-full">
+    <div className="w-full" style={{ fontFamily: 'Poppins, sans-serif' }}>
       {/* Modern Header */}
       <div className="text-center mb-6 pb-4 border-b border-gray-100">
         <div className="flex items-center justify-center mb-3">
-          <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center mr-3">
+          <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
             <Palette className="w-4 h-4 text-white" />
           </div>
           <h2 className="text-xl font-bold text-gray-900">Color Palette</h2>
@@ -134,7 +134,7 @@ const ColorPicker = ({ onColorChange, compact = false }) => {
             onClick={() => setActiveColorType(type.key)}
             className={`p-4 rounded-xl border-2 transition-all duration-200 ${
               activeColorType === type.key
-                ? 'border-primary-500 bg-gradient-to-br from-primary-50 to-primary-100 shadow-md'
+                ? 'border-indigo-500 bg-gradient-to-br from-indigo-50 to-indigo-100 shadow-md'
                 : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
             }`}
           >
@@ -204,7 +204,7 @@ const ColorPicker = ({ onColorChange, compact = false }) => {
                       onClick={() => handleColorSelect(color.value)}
                       className={`relative w-8 h-8 transition-all duration-200 ${
                         isSelected 
-                          ? 'ring-2 ring-primary-500 ring-offset-2 ring-offset-white' 
+                          ? 'ring-2 ring-indigo-500 ring-offset-2 ring-offset-white' 
                           : 'hover:ring-1 hover:ring-gray-300'
                       }`}
                       style={{ backgroundColor: color.value }}
@@ -257,7 +257,7 @@ const ColorPicker = ({ onColorChange, compact = false }) => {
                   handleColorSelect(e.target.value);
                 }
               }}
-              className="w-full px-4 py-3 text-sm font-mono border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white shadow-sm"
+              className="w-full px-4 py-3 text-sm font-mono border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white shadow-sm"
               placeholder="#000000"
             />
           </div>
