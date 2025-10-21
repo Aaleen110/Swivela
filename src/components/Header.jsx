@@ -15,7 +15,7 @@ import FontPicker from './FontPicker';
 import LogoPicker from './LogoPicker';
 
 const Header = () => {
-  const { websiteConfig, updateColors, updateFonts } = useWebsiteStore();
+  const { websiteConfig, updateColors, updateFonts, selectedSections, content } = useWebsiteStore();
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [showFontPicker, setShowFontPicker] = useState(false);
   const [showLogoPicker, setShowLogoPicker] = useState(false);
@@ -27,6 +27,19 @@ const Header = () => {
 
   const handleFontChange = (fonts) => {
     updateFonts(fonts);
+  };
+
+  const handlePreview = () => {
+    // Save current state to localStorage
+    const currentState = {
+      selectedSections,
+      websiteConfig,
+      content
+    };
+    localStorage.setItem('swivela-website-data', JSON.stringify(currentState));
+    
+    // Open preview in a new tab
+    window.open('/preview.html', '_blank');
   };
 
   return (
@@ -100,7 +113,10 @@ const Header = () => {
             </button>
 
             {/* Preview */}
-            <button className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+            <button 
+              onClick={handlePreview}
+              className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+            >
               <Eye className="w-4 h-4" />
               <span>Preview</span>
             </button>
